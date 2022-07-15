@@ -6,7 +6,7 @@ import Fotter from "../Fotter/Fotter";
 import "./App.css";
 
 const totalTime = 60;
-const url = "http://metaphorpsum.com/paragraphs/1/30";
+const url = "https://baconipsum.com/api/?type=meat-and-filler&paras=5&format=text";
 const defaultState={
   selectedParagraph: "MY name is Lovekesh",
   timerStarted: false,
@@ -146,3 +146,5 @@ class App extends React.Component {
 export default App;
 
 // https://github.com/TheLeanProgrammer/flashtype
+
+//https://baconipsum.com/json-api/
