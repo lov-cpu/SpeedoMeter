@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SpeedoMeter/static/css/main.7c3b7483.css",
+    "main.js": "/SpeedoMeter/static/js/main.5a86338b.js",
+    "static/media/flash.png": "/SpeedoMeter/static/media/flash.96e141d3fe30913c3117.png",
+    "static/media/logo.png": "/SpeedoMeter/static/media/logo.904ac8fd0f7b25e86967.png",
+    "index.html": "/SpeedoMeter/index.html",
+    "main.7c3b7483.css.map": "/SpeedoMeter/static/css/main.7c3b7483.css.map",
+    "main.5a86338b.js.map": "/SpeedoMeter/static/js/main.5a86338b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7c3b7483.css",
+    "static/js/main.5a86338b.js"
+  ]
+}
