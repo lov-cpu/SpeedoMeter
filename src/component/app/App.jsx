@@ -3,6 +3,7 @@ import Nav from "../Nav/Nav";
 import Landing from "../Landing/Landing";
 import ChallengeSection from "../ChallengeSection/ChallengeSection";
 import Fotter from "../Fotter/Fotter";
+import {SAMPLE_PARAGRAPHS} from "./../../data/sampleParagraph";
 import "./App.css";
 
 const totalTime = 60;
@@ -21,12 +22,11 @@ const defaultState={
 class App extends React.Component {
   state = defaultState
 
-  fetchNewParagraph = () =>{
-    fetch(url)
-      .then((response) => response.text())
-      .then((data) => {
+  fetchNewParagraphFallback = () =>{
+    const data= SAMPLE_PARAGRAPHS[
+      Math.floor(Math.random() * SAMPLE_PARAGRAPHS.length)
+    ];
 
-        
     const selectedParagraphArray = data.split("");
     const testInfo = selectedParagraphArray.map((selectedLetter) => {
       return {
@@ -36,11 +36,29 @@ class App extends React.Component {
     });
 
     this.setState({ ...defaultState,testInfo , selectedParagraph: data });//Name of key ==Name of value so can be reduced
+
+  }
+
+  fetchNewParagraph = () =>{
+    fetch(url)
+      .then((response) => response.text())
+      .then((data) => {
+
+        const selectedParagraphArray = data.split("");
+    const testInfo = selectedParagraphArray.map((selectedLetter) => {
+      return {
+        testLetter: selectedLetter,
+        status: "notAttempted",
+      };
+    });
+
+    this.setState({ ...defaultState,testInfo , selectedParagraph: data });//Name of key ==Name of value so can be reduced
+    
       });
   }
 
   componentDidMount() {
-      this.fetchNewParagraph();
+      this.fetchNewParagraphFallback();
   }
 
   startTimer = () => {
@@ -61,7 +79,7 @@ class App extends React.Component {
     }, 1000);
   };
 
-  startAgain = () => this.fetchNewParagraph();  
+  startAgain = () => this.fetchNewParagraphFallback();  
 
   handleUserInput = (inputValue) => {
     if (!this.state.timerStarted) {
